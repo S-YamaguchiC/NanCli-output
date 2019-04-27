@@ -2,8 +2,6 @@
     <div class="hello">
         <h1>{{ msg }}</h1>
 
-        <!--button 4th 選んだもの以外はDisable -->
-        <!--<chart-comp></chart-comp>-->
         <form id="n_form">
             <p>選択肢 → [
                 <input type="radio" name="b1" value="A" @click="addData" required>A
@@ -17,10 +15,9 @@
         <h3>↓結果だお↓</h3>
         <div class="small">
             <line-chart :chart-data="datacollection" style="width: 450px;"></line-chart>
-            <!--<button @click="fillData()">Randomize</button>-->
         </div>
 
-        <!--footer-->
+        <!--TwitterのIDをさらしていくすたいる-->
         <div class="wrapper">
             <footer>
                 Created by ちくわまんじ（ @kawasaki_dst ）
@@ -62,10 +59,6 @@
                         }
                     ]
                 }
-            },
-
-            getRandomInt () {
-                return Math.floor(Math.random() * (50 - 5 + 1)) + 5
             },
 
             addData: function () {
