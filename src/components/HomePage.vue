@@ -2,25 +2,26 @@
     <div class="hello">
         <h1>{{ msg }}</h1>
 
-        <form id="n_form">
-            <p>選択肢 → [
-                <input type="radio" name="b1" value="A" @click="addData" required>A
-                <input type="radio" name="b1" value="B" @click="addData" required>B
-                <input type="radio" name="b1" value="C" @click="addData" required>C
-                <input type="radio" name="b1" value="D" @click="addData" required>D
-                 ]
-            </p>
-        </form>
-
-        <h3>↓結果だお↓</h3>
         <div class="small">
-            <line-chart :chart-data="datacollection" style="width: 450px;"></line-chart>
+
+            <form id="n_form">
+                <p>選択肢 → [
+                    <input type="radio" name="b1" value="A" @click="addData" required>A
+                    <input type="radio" name="b1" value="B" @click="addData" required>B
+                    <input type="radio" name="b1" value="C" @click="addData" required>C
+                    <input type="radio" name="b1" value="D" @click="addData" required>D
+                    ]
+                </p>
+            </form>
+
+            <h3>↓結果だお↓</h3>
+            <line-chart :chart-data="datacollection" style="width: 350px;"></line-chart>
         </div>
 
         <!--TwitterのIDをさらしていくすたいる-->
         <div class="wrapper">
             <footer>
-                Created by ちくわまんじ（ @kawasaki_dst ）
+                © 2019 S-YamaguchiC( <a href="https://twitter.com/kawasaki_dst" style="color: black">@kawasaki_dst</a> )
             </footer>
         </div>
 
@@ -54,7 +55,7 @@
                     datasets: [
                         {
                             label: ['A', 'B', 'C', 'D'],
-                            backgroundColor: ['#f87979', '#f27732', '#f12735', '#f34628'],
+                            backgroundColor: ['#5f9ea0', '#eee8aa', '#ffa07a', '#dda0dd'],
                             data: [this.counterA, this.counterB, this.counterC, this.counterD]
                         }
                     ]
@@ -94,6 +95,9 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    .hello {
+        alignment: center;
+    }
     h3 {
         margin: 40px 0 0;
     }
@@ -109,7 +113,7 @@
         color: #42b983;
     }
     .small {
-        max-width: 450px;
+        max-width: 400px;
         margin:  25px auto;
     }
 
@@ -123,7 +127,7 @@
 
     footer{
         width: 100%;
-        background-color: #FA8258;
+        background-color: #87cefa;
         color: #fff;
         text-align: center;
         padding: 10px 0;
@@ -131,4 +135,5 @@
         position: absolute;/*←絶対位置*/
         bottom: 0; /*下に固定*/
     }
+
 </style>
