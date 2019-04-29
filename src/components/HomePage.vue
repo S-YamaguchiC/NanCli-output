@@ -51,7 +51,7 @@
         methods: {
             fillData () {
                 this.datacollection = {
-                    labels: ['A:' + this.counterA, 'B:' + this.counterB, 'C:' + this.counterC, 'D:' + this.counterD],
+                    labels: ['A', 'B', 'C', 'D'],
                     datasets: [
                         {
                             label: ['A', 'B', 'C', 'D'],
