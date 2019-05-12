@@ -4,19 +4,14 @@
 
         <div class="small">
 
-            <form id="n_form">
-                <p>選択肢 → [
-                    <input type="radio" name="b1" value="A" @click="addData" required>A
-                    <input type="radio" name="b1" value="B" @click="addData" required>B
-                    <input type="radio" name="b1" value="C" @click="addData" required>C
-                    <input type="radio" name="b1" value="D" @click="addData" required>D
-                    ]
-                </p>
-            </form>
-
             <h3>↓結果だお↓</h3>
             <line-chart :chart-data="datacollection" style="width: 350px;"></line-chart>
         </div>
+
+        <p>リセットボタン</p>
+        <form id="reset_form" method="post" action="CGIのパス">
+            <input type="button" @click="reset" value="チャートを初期化"/>
+        </form>
 
         <!--TwitterのIDをさらしていくすたいる-->
         <div class="wrapper">
@@ -38,6 +33,7 @@
         },
         data () {
             return {
+                // 初期値
                 counterA: 1,
                 counterB: 1,
                 counterC: 1,
@@ -48,7 +44,11 @@
         mounted () {
             this.fillData()
         },
+
+        // 以下で関数を定義
         methods: {
+
+            // チャート描画用
             fillData () {
                 this.datacollection = {
                     labels: ['A', 'B', 'C', 'D'],
@@ -57,36 +57,21 @@
                             label: ['A', 'B', 'C', 'D'],
                             backgroundColor: ['#5f9ea0', '#eee8aa', '#ffa07a', '#dda0dd'],
                             data: [this.counterA, this.counterB, this.counterC, this.counterD]
+                            // data: [ method1(), method2(), method3(), method4() ]
                         }
                     ]
                 }
             },
 
-            addData: function () {
-                // ラジオボタン選んでSubmit押した時の円グラフ更新
-                var radio = document.getElementById('n_form').b1.value
-
-                // 押されたラジオボタンでそれぞれいんくりめんと
-                if (radio === "A") {
-                    this.counterA++
-                    this.fillData()
-                } else if (radio === "B") {
-                    this.counterB++
-                    this.fillData()
-                } else if (radio === "C") {
-                    this.counterC++
-                    this.fillData()
-                } else if (radio === "D") {
-                    this.counterD++
-                    this.fillData()
-                } else {
-                    alert("err")
-                }
-
-                // ラジオボタンと送信ボタンを無効化する(reset呼び出しで有効化)
-            },
+            // チャートを初期化する
             reset: function () {
+                alert("RESET")
                 // ボタンを押したら、投票を無効にしてラジオボタンを初期化
+                this.counterA = 1
+                this.counterB = 1
+                this.counterC = 1
+                this.counterD = 1
+                // this.form.submit()
             }
         }
     }
