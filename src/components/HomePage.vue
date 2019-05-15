@@ -9,7 +9,7 @@
         </div>
 
         <p>リセットボタン</p>
-        <form id="reset_form" method="post" action="CGIのパス">
+        <form id="reset_form">
             <input type="button" @click="reset" value="チャートを初期化"/>
         </form>
 
@@ -26,6 +26,7 @@
 <script>
     // Vue.component('chart-comp', PieChart)
     import LineChart from './PieChart.js'
+    import axios from 'axios'
 
     export default {
         components: {
@@ -43,6 +44,7 @@
         },
         mounted () {
             this.fillData()
+            this.reDraw()
         },
 
         // 以下で関数を定義
@@ -50,6 +52,22 @@
 
             // チャート描画用
             fillData () {
+
+                // axiosでとってくる
+                axios.get('CGIのパス')
+                    .then(response => {
+                        this.counterA = response.data.counterA
+                        this.counterB = "cgiのでーた"
+                        this.counterC = "cgiのでーた"
+                        this.counterD = "cgiのでーた"
+                    })
+                    .catch(err => {
+                        this.counterA = err
+                        this.counterB = "cgiのでーた"
+                        this.counterC = "cgiのでーた"
+                        this.counterD = "cgiのでーた"
+                    });
+
                 this.datacollection = {
                     labels: ['A', 'B', 'C', 'D'],
                     datasets: [
@@ -72,6 +90,11 @@
                 this.counterC = 1
                 this.counterD = 1
                 // this.form.submit()
+            },
+
+            // 定期実行
+            reDraw:function () {
+                this.fillData().interval(10000)
             }
         }
     }
